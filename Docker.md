@@ -33,15 +33,15 @@
 
 ## Application Environments :
 
-1. DEV : Developers will use it for integration testing
--
-2. SIT : Testing team will use it for system integration testing
+### DEV : Developers will use it for integration testing
 
-3. UAT : Client will use it for acceptance testing
+### SIT : Testing team will use it for system integration testing
+
+### UAT : Client will use it for acceptance testing
  
-4. PILOT : Pre Production Environment
+### PILOT : Pre Production Environment
 
-5. PROD : Live Environment (end users can access our application running in prod)
+### PROD : Live Environment (end users can access our application running in prod)
 
 ## Challenges in Deployment Process :
 
@@ -69,14 +69,18 @@
 - If we use Docker in our project then we can run our project in any system without bothring about underlying softwares.
 
 ## Docker Architecture:
--DockerFile : A DockerFile is a script used to create Docker Container Image. It Contains instructions that Docker uses to build the image layer by layer.
-- Docker Image : It is a package which contains code + Dependencies.
+### DockerFile : 
+-A DockerFile is a script used to create Docker Container Image. It Contains instructions that Docker uses to build the image layer by layer.
+### Docker Image : 
+-It is a package which contains code + Dependencies.
  - MORE ::A Docker image is a lightweight, standalone, and executable package that includes everything needed to run  
                          a piece of software, including the code, runtime, libraries, and system tools.
--Docker Registry (DockerHub) : It is a place where we can store docker images.
+### Docker Registry (DockerHub) : 
+-It is a place where we can store docker images.
    -MORE :: Docker Hub is a cloud-based registry service provided by Docker for sharing and managing Docker Images.
 
--Docker Container : When we run docker Image then docker container will be created. Our application will execute inside the  docker container.
+### Docker Container : 
+-When we run docker Image then docker container will be created. Our application will execute inside the  docker container.
      -MORE :: A Docker container is a lightweight, standalone, and executable software package that includes 
               everything needed to run a piece of software, including the code, runtime, libraries, and settings.
 
