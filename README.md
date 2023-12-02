@@ -1,4 +1,3 @@
-# Notes_Jenkins_CICD
 ## Jenkins : 
 
 
@@ -103,3 +102,5 @@ CD - Continous Deployment/Delivery --> Delivery means app is ready for deploymen
 CI -> When code changes happen it should be ready to test
 C Delivery -> Keep it ready to realese
 C Deployment -> Deploy the project to production
+
+##Note: For Production Deployment we need to take client approval
