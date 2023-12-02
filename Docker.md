@@ -33,31 +33,26 @@
 
 ## Application Environments :
 
-### DEV : Developers will use it for integration testing
+#### DEV : Developers will use it for integration testing
 
-### SIT : Testing team will use it for system integration testing
+#### SIT : Testing team will use it for system integration testing
 
-### UAT : Client will use it for acceptance testing
+#### UAT : Client will use it for acceptance testing
  
-### PILOT : Pre Production Environment
+#### PILOT : Pre Production Environment
 
-### PROD : Live Environment (end users can access our application running in prod)
+#### PROD : Live Environment (end users can access our application running in prod)
 
 ## Challenges in Deployment Process :
 
 1. Environment Setup
-
 2. Setting up required dependencies (Softwares)
-
 3. Version Conflicts
-
 4. Environment Maintenance
-
 5. Enviroment Issues
 
-
-==> Challenge : version conflict may occur in above environments and application my not be working. 
-==> Environment setup is time taking process and Error Prone
+### Challenge : version conflict may occur in above environments and application my not be working. 
+### Environment setup is time taking process and Error Prone
 
 -------------------------------------------------------------------------------------------------------------------------
 
@@ -89,7 +84,7 @@
 <> Containers created based on virtualization.
 <> Every Docker container is a virtual machine.
 
-### <> Virtualization : Running one OS on another OS.
+#### Note: Virtualization means Running one OS on another OS.
 
 ## Docker Setup:
 ```
