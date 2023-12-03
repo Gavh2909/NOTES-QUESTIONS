@@ -70,7 +70,7 @@
 
 
 ## Challenges in Manual Deployment:
-   
+   ##### In manual deployment we have to create WAR file manually, upload that file on tomcat server manually.
    1. Every Day we need to deploy latest code.
    2. Deploy code in multiple environmentss.
    3. Takes a lot of time
