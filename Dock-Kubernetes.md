@@ -1,1 +1,0 @@
-# DOcker - Kubernetes
