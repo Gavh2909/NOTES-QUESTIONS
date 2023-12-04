@@ -81,3 +81,14 @@
 ### Batch Execution :
 
 ### Horizontal Scaling :
+
+## Architecture of Kubernetes:
+
+##### When you deploy Kubernetes, you get a cluster.
+##### A cluster is a set of machines, called NODEs.
+##### A cluster has at least one [WORKER NODE] and at least one [MASTER NODE].
+##### There can be more than one master nodes in the cluster to provide a cluster with failover and high availability.
+##### There can be multiple clusters in Kubernetes architecture.
+
+https://images.app.goo.gl/KkseUgygTQqKKdNs8
+
