@@ -29,7 +29,6 @@
           - Monitoring
 
 ## Features: 
-  
   ### Automatic Bin Packing : (bean means server)
         - Kubernetes will take care of packaging available jobs (containers) in bins (servers) in most efficient way.
         - Kubernetes automatically packages your application and schedules the container based on the requirements and 
@@ -41,16 +40,15 @@
         - When you specify a  Pod, you can optionally how much CPU and memory (RAM ) each  container needs. WHen Containers 
           have resource requests specified, the scheduler can make better decisions about which nodes to place Pods on.
   ### Service discovery & load balancing :
-          How kubernetes organizes containers?
+        $  How kubernetes organizes containers?
              - Kubernetes does not run containers directly, instead it wraps one or more containers into a higher-level 
                structure called Pod.
-               
-          A POD contains:
+        $  A POD contains:
              - an application container (or, in some cases, multiple containers)
              - one storage resource for all containers
              - a unique network IP
           
-           A kubernetes service is a set of pods that work together.
+        $$   A kubernetes service is a set of pods that work together.
 
            With this system, kubernetes has control over network and communication between pods and can load load 
                balance across them.
@@ -62,3 +60,26 @@
          - If container fails - K8s restarts the container
          - If Nod dies - replaces and reschedule containers on other nodes
          - If containner does not respond to user defined health check -> Kills the container
+
+  ### Automated Rollouts & Rollbacks :
+   #### Rollout : Deploy changes to the application or its configurations.
+   #### RollBack : Revert the changes & restore to previous state.
+   ##### Kubernetes ensures there is no downtime during this process.
+   #### Kubernetes progressively rolls out changes to your application or its configuration, while monitoring application health to ensure it doesn't kill all your instances at the same time. If something goes wrong Kubernetes will RollBack the changes for you.
+
+  ### Secret and Configuration Management :
+
+  #### Secret:
+- In Kubernetes sensitive data like passwords, keys, tokens are handled using secrets.
+- Secrets in Kubernetes created outside PODs & Containers.
+
+#### Config Maps :
+- In Kubernetes configurations are handled using Config Maps.
+- Config maps in Kubernetes created outside PODs & Containers.
+
+##### Secrets and Config Map are a kubernetes objects that seperated sensitive data and configurations respectively from PODs and Containers.
+##### Secrets and configurations are stored in ETCD, it is a key-value datastore(database) - size limit 1MB
+
+### Batch Execution :
+
+### Horizontal Scaling :
