@@ -8,16 +8,14 @@
    
    ##### Note : Orchetration -> means management ( process which is used to manage our containers )
    
-   ### Container Orchetration tool or engine automates depoying, scaling and managing contanerized application on a grup of 
-        servers.
+   ### Container Orchetration tool or engine automates depoying, scaling and managing contanerized application on a grup of servers.
    e.g. Kubernetes, Docker Swarn, Apache Mesos Marathon.
 
 ## Kubernetes :
   - Open Source container orchetration tool.
   - Developed by Google
   - Helps manage containerized applications.
-  - ### Kubernetes is a container management tool which manages containerized applications like applications available on 
-    container platform like Docker.
+  - ### Kubernetes is a container management tool which manages containerized applications like applications available on container platform like Docker.
 
 ##### Kubernetes takes care of 
           - Deploying
