@@ -41,23 +41,23 @@
         - When you specify a  Pod, you can optionally how much CPU and memory (RAM ) each  container needs. WHen Containers 
           have resource requests specified, the scheduler can make better decisions about which nodes to place Pods on.
   ### Service discovery & load balancing :
-         #### How kubernetes organizes containers?
+          How kubernetes organizes containers?
              - Kubernetes does not run containers directly, instead it wraps one or more containers into a higher-level 
                structure called Pod.
                
-         #### A POD contains:
+          A POD contains:
              - an application container (or, in some cases, multiple containers)
              - one storage resource for all containers
              - a unique network IP
           
-          ### A kubernetes service is a set of pods that work together.
+           A kubernetes service is a set of pods that work together.
 
-          #### With this system, kubernetes has control over network and communication between pods and can load load 
+           With this system, kubernetes has control over network and communication between pods and can load load 
                balance across them.
   ### Storage Orchestration:
          - Containers running inside a pod may need to store data, PODs can have a storage volumes
          - Usually a single volume is shared within all the containers in a POD.
-         - #### Kubernetes allows to mount a storage system of your choice LOCAL, CLOUD (aws), NETWORK
+         - Kubernetes allows to mount a storage system of your choice LOCAL, CLOUD (aws), NETWORK
   ### Self - Healing:
          - If container fails - K8s restarts the container
          - If Nod dies - replaces and reschedule containers on other nodes
