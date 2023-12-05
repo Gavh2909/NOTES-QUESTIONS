@@ -96,3 +96,36 @@
 ##### There can be more than one master nodes in the cluster to provide a cluster with failover and high availability.
 ##### There can be multiple clusters in Kubernetes architecture.
 
+## Components of Master Node :
+
+#### API server : responsible for all communications (JSON over HTTP API)
+- APIs allows applications to communicate with one another.
+- It is frontend for kubernetes control panel
+- exposes APIs for almost every operations.
+- The users, management devices, and command line interfaces all talk to the API server to interact with Kubernetes cluster.
+- User interact with API using a tool called KubeCTL, it is a command line utility to interact with Kubernetes API.
+  
+#### Scheduler : Schedules PODs on NODEs
+- Schedules PODs across multiple nodes.
+- Scheduler gets all the information for hardware configuration from configuration file and schedules the PODs on nodes accordingly.
+  
+#### Controller Manager : Runs Controllers
+- This is a component on master that runs controllers.
+- Kube-Controller-Manager : Runs controllers responsible to act when nodes become unavailable, to ensure POD counts are as expected. to create endpoints, service accounts, and API access tokens.
+      - Responsible for : 1) Ensures nodes are running all the time.
+                          2) Correct no of PODs are running as per spec file.
+
+- Cloud-Controller-Manager : Runs controller responsible to interact with the underlying infrastructure of a cloud provider when nodes become unavailable, to manage storage volumes when provided by a cloud service, and to manage load balancing and routing.
+
+- Node Controller : Responsible for noticing and responding when nodes go down.
+- Replication controller : Responsible for maintaining the correct number of PODs for every replication controller object in the system.
+  
+#### ETCD : open source, distributed key-value database from CareOS
+- Consistent and highly-available key-vallue store used as Kubernetes backing store for all cluster data.
+- Out of master components, only the API server is able to communicate with the etcd data store.
+- ETCD can be a part of master OR it can be configured externally.
+
+## Components of Worker Node :
+- Can be any physical or virtual macine where containers are deployed.
+- Every node in a Kubernetes cluster must run a container runtime like docker.
+- <-------------------------------------->
