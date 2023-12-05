@@ -1,6 +1,6 @@
 
 
-**Spring Core Interview Questions and Answers**
+# Spring Core Interview Questions and Answers
 
 ### 1. **What is the Spring Framework?**
    - **Answer:**
@@ -467,10 +467,80 @@ public class MyController {
      - The @SpringBootApplication annotation is a meta-annotation that combines @Configuration, @EnableAutoConfiguration, and @ComponentScan.
      - It is used to mark the main class of a Spring Boot application.
      - It enables auto-configuration and component scanning.
+     - 
+### 28. How can you enable caching in a Spring application?
+- Approach: Use the @Cacheable annotation.
+- Usage: Applied to methods to cache their results.
+- Configuration: Requires the @EnableCaching annotation on a configuration class.
+Example:
+```
+@Service
+@Cacheable("userData")
+public class ExampleService {
+    public User getUserById(Long id) {
+        // Logic to retrieve user data
+    }
+}
+```
+### 29. Explain the purpose of the @Scheduled annotation in Spring.
+- Purpose: Enables scheduling of methods for periodic execution.
+- Usage: Applied to methods in Spring components.
+- Configuration: Requires the @EnableScheduling annotation on a configuration class.
+```
+@Service
+@EnableScheduling
+public class ScheduledService {
+    @Scheduled(fixedRate = 5000)
+    public void performTask() {
+        // Task logic
+    }
+}
+```
+### 30. What is the purpose of the @RequestMapping annotation in Spring MVC?
+- Purpose: Maps HTTP requests to specific handler methods.
+- Usage: Applied at the class or method level to define request mappings.
 
-```java
-@SpringBootApplication
-public class MyApplication {
+```
+@Controller
+@RequestMapping("/example")
+public class ExampleController {
+    @RequestMapping("/hello")
+    public String hello() {
+        return "helloPage";
+    }
+}
+```
 
-    public static void main(String[] args) {
-        SpringApplication.run(My
+### 31. How can you implement file upload functionality in Spring MVC?
+- Approach: Use the MultipartFile class and the @RequestParam annotation.
+```
+@Controller
+@RequestMapping("/file")
+public class FileController {
+    @PostMapping("/upload")
+    public String handleFileUpload(@RequestParam("file") MultipartFile file) {
+        // Logic to handle the uploaded file
+    }
+}
+```
+### 32. Explain the purpose of the @CrossOrigin annotation in Spring MVC.
+- Purpose: Enables cross-origin resource sharing (CORS) for specific controllers or methods.
+- Usage: Applied at the class or method level.
+```
+@RestController
+@CrossOrigin(origins = "http://allowed-origin.com")
+public class ExampleController {
+    // Controller methods
+}
+```
+### 30. How can you create a RESTful web service in Spring?
+- Approach: Use the @RestController annotation.
+```
+@RestController
+public class ExampleController {
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello, World!";
+    }
+}
+```
