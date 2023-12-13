@@ -36,20 +36,18 @@ export const loginFailure = (error) => ({
 ## Step 3: Create Reducer
 - Reducers are functions that specify how the state changes in response to actions.
 
-  ```
-  authReducer.js
+```
+authReducer.js
+ import { LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/actionTypes';
+ const initialState = {
+   userData: null,
+   error: null,
+ };
 
-  import { LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/actionTypes';
-
-const initialState = {
-  userData: null,
-  error: null,
-};
-
-const authReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case LOGIN_SUCCESS:
-      return {
+  const authReducer = (state = initialState, action) => {
+    switch (action.type) {
+      case LOGIN_SUCCESS:
+        return {
         ...state,
         userData: action.payload,
         error: null,
@@ -84,6 +82,7 @@ export default rootReducer;
 
 ## Step 5: Set Up the Store
 - Create a Redux store by defining your state and reducers. The store is the central hub that holds the entire state of your application.
+
 ```
 store.js
 
