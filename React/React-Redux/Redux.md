@@ -18,3 +18,5 @@ const store = createStore(rootReducer);
 
 export default store;
 ```
+## Step 3: Create Reducers
+- Reducers are functions that specify how the state changes in response to actions. Create a folder called reducers and add your reducers.
