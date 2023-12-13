@@ -93,5 +93,42 @@ const store = createStore(rootReducer);
 
 export default store;
 ```
+### Now Lets see how to configure it for storing and getting data
 
-  
+## Storing Data in Store
+- we can store data in store using mapDispatchToProps method
+- For this we need connect and dispatch functions.
+### In Redux, dispatch is a function provided by the Redux store. It is used to dispatch actions, which are plain JavaScript objects that describe changes in the application's state. When you dispatch an action, the Redux store runs its reducer function, which specifies how the state should be updated based on the given action.
+
+### In React-Redux, the connect function is used to connect a React component to the Redux store. It allows the component to subscribe to the Redux store and access the state and actions it needs. The connect function is part of the react-redux library.
+
+```
+import axios from "axios";
+import { loginFailure, loginSuccess } from "../../redux/actions/userActions";
+import { connect } from "react-redux";
+
+const Login = ({ dispatchLoginSuccess, dispatchLoginFailure, data, error }) => {
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("http://localhost:8080/user/login",formData);
+      dispatchLoginSuccess(response.data);
+    } catch (error) {
+      dispatchLoginFailure(error);
+    }
+  };
+
+  return (
+    <div className="login">
+      # Login Code to get Data
+    </div>
+  );
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchLoginSuccess: (userData) => dispatch(loginSuccess(userData)),
+  dispatchLoginFailure: (error) => dispatch(loginFailure(error)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+```
