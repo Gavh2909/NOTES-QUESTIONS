@@ -1,7 +1,7 @@
 
-1. Different between normal hashmap and concurrent hashmap?
+### Different between normal hashmap and concurrent hashmap?
 
-2. Immutability concept.
+ ### Immutability concept.
    - immuntability in java refers to the property of an object whose state cannot be modified after it has been created.
    - 1. How to make a class immutable?
    - Make the class itself 'final' to prevent it from being extended.
@@ -12,19 +12,20 @@
    - In java strings are immutable by default. Once a String object is created, its content cannot be changed.
    - However, if you use StringBuilder or StringBuffer you are working with mutable String-like objects.
 
-4. WHat is concurrent apps?
+### WHat is concurrent apps?
 - refers to programs or systems that are designed to execute multiple tasks or processes simultaneously.
 - Can be achieved usng threads or processes. Threads are lighter-weight units of execution within a process, while processes are independent programs with their own memory space.
-5. Threading and multi-threading  **  [DONE]
+  
+### Threading and multi-threading  **  [DONE]
 
-6. Wrapper Classes.   [Done]
+### Wrapper Classes.   [Done]
 - A Wrapper class in Java is a class whose object wraps or contains primitive data types
 
-7. How to make a class immutable? [DONE]
+### How to make a class immutable? [DONE]
 
-8. Different between jaa 8 and 7
+### Different between jaa 8 and 7
 
-9. streat, filter, mapOInt in arraylist[done]
+### streat, filter, mapOInt in arraylist[done]
     ```
     //STREAM 
         Stream<String> stream=list.stream();
@@ -33,9 +34,9 @@
         List<String> filteredlist=list.stream().filter(s->s.length()>5).collect(Collectors.toList());
     ```
 
-11. What is method reference?[done]
+### What is method reference?[done]
 
-12. what is SYSTEM.OUT.PRINTLN in syso?
+### what is SYSTEM.OUT.PRINTLN in syso?
 - system.out.println is a java statement used to print output to the console.
 - it belongs to java.lang package and its a member of system class
 - System: this is a class in Java's 'java.lang' package. It provides access to various system-related properties and methods.
