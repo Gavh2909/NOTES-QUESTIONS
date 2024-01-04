@@ -120,6 +120,7 @@ public class VariableLengthArg {
 - in Java is a class that cannot be instantiated on its own and may contain abstract methods.
 - Abstract methods are declared without an implementation in the abstract class and must be implemented by concrete (non-abstract) subclasses.
 - Abstract classes can have both abstract and non-abstract (concrete) methods.
+- used to achieve abstarction like interface.
 ```
  abstract class Shape { //abstract class
     abstract void draw(); // Abstract method
@@ -138,8 +139,161 @@ class Circle extends Shape {
 ```
   03:01:2024
       
+### 16: Interface-
+- In Java, an interface is a reference type that is similar to a class. It is a collection of abstract methods. When a class implements an interface, it inherits the abstract methods defined in that interface. Additionally, starting from Java 8, interfaces can also include default and static methods with implementations.
+- used to achieve abstraction like abstract class.
 
-17. Abstract class vs Interface.
+Here are some key points about interfaces in Java:
+
+1. **Declaration:**
+   - You declare an interface using the `interface` keyword.
+   - Example:
+
+     ```java
+     interface MyInterface {
+         void abstractMethod(); // Abstract method (implicitly public and abstract)
+         
+         default void defaultMethod() {
+             // Default method with implementation
+             System.out.println("Default method");
+         }
+
+         static void staticMethod() {
+             // Static method with implementation
+             System.out.println("Static method");
+         }
+     }
+     ```
+
+2. **Abstract Methods:**
+   - In an interface, methods are implicitly public and abstract. You don't need to use the `public` or `abstract` modifiers explicitly.
+   - Example:
+
+     ```java
+     interface MyInterface {
+         void abstractMethod(); // Abstract method
+     }
+     ```
+
+3. **Default Methods:**
+   - Starting from Java 8, interfaces can include default methods, which provide a default implementation.
+   - Classes implementing the interface can choose to override the default method.
+   - Example:
+
+     ```java
+     interface MyInterface {
+         default void defaultMethod() {
+             System.out.println("Default method");
+         }
+     }
+     ```
+
+4. **Static Methods:**
+   - Starting from Java 8, interfaces can include static methods with an implementation.
+   - Static methods are associated with the interface, not with instances of implementing classes.
+   - Example:
+
+     ```java
+     interface MyInterface {
+         static void staticMethod() {
+             System.out.println("Static method");
+         }
+     }
+     ```
+
+5. **Implementing an Interface:**
+   - To use an interface in a class, you use the `implements` keyword.
+   - Example:
+
+     ```java
+     class MyClass implements MyInterface {
+         @Override
+         public void abstractMethod() {
+             System.out.println("Implemented abstract method");
+         }
+     }
+     ```
+
+6. **Multiple Inheritance:**
+   - Unlike classes, a class can implement multiple interfaces in Java, enabling a form of multiple inheritance through interfaces.
+   - Example:
+
+     ```java
+     interface Interface1 {
+         // methods
+     }
+
+     interface Interface2 {
+         // methods
+     }
+
+     class MyClass implements Interface1, Interface2 {
+         // Implementation of methods from Interface1 and Interface2
+     }
+     ```
+
+
+### 17. Abstract class vs Interface.
+In Java, both abstract classes and interfaces are used to achieve abstraction, but they have some key differences in terms of functionality and usage. Here are the main distinctions between abstract classes and interfaces:
+
+1. **Abstract Class:**
+   - An abstract class is a class that cannot be instantiated on its own and may contain both abstract and concrete methods.
+   - Abstract methods declared in an abstract class are implicitly abstract and must be implemented by concrete subclasses.
+   - An abstract class can have instance variables (fields), constructors (including a default constructor), and non-abstract methods with or without implementations.
+   - It supports the concept of constructors, which can be used to initialize instance variables and perform other tasks during object creation.
+   - A class can extend only one abstract class.
+
+   Example:
+
+   ```java
+   abstract class AbstractClass {
+       int commonField;
+
+       AbstractClass(int commonField) {
+           this.commonField = commonField;
+       }
+
+       abstract void abstractMethod();
+
+       void concreteMethod() {
+           System.out.println("Concrete method");
+       }
+   }
+   ```
+
+2. **Interface:**
+   - An interface is a collection of abstract methods, default methods, and static methods. Starting from Java 8, interfaces can have methods with implementations.
+   - All methods declared in an interface are implicitly public and abstract (except for static and default methods).
+   - Interfaces can't have instance variables (fields), constructors, or non-abstract methods with implementations (except for static and default methods).
+   - It supports multiple inheritance, as a class can implement multiple interfaces.
+   - Interfaces are often used to define contracts for classes that implement them.
+
+   Example:
+
+   ```java
+   interface MyInterface {
+       void abstractMethod(); // Implicitly public and abstract
+
+       default void defaultMethod() {
+           System.out.println("Default method");
+       }
+
+       static void staticMethod() {
+           System.out.println("Static method");
+       }
+   }
+   ```
+
+**When to Use Abstract Class vs Interface:**
+
+- Use an abstract class when you want to provide a common base class for other classes to inherit from. Abstract classes are useful for sharing code and providing a common structure.
+
+- Use an interface when you want to define a contract that multiple classes can implement. Interfaces are more suitable for scenarios where a class may need to inherit from multiple sources.
+
+- If you need to provide a default implementation for some methods, use an abstract class. If you want to define a contract without providing any default implementation, use an interface.
+
+In some cases, a combination of abstract classes and interfaces may be used to achieve the desired level of abstraction and code reuse in a Java application.
+
 
 18. functional interface. **
 
