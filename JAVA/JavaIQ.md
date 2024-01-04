@@ -44,9 +44,26 @@
 - println or print : it is a method of 'PrintStream' class.
 - 
 
-  ### 11. Variable length arguments in java?
+### 11. Variable length arguments in java?
+- In Java, you can use variable-length argument lists, also known as varargs, to allow a method to accept a variable number of arguments of the same type. Varargs were introduced in Java 5. To use varargs, you specify an ellipsis (...) followed by the argument type in the method parameter declaration.
+- 
+```
+public class VariableLengthArg {
+    public static int sum(int... numbers){
+        int result=0;
+        
+        for(int n:numbers){
+            result+=n;
+        }
+        return result;
+    }
+    public static void main(String[] args) {
+        System.out.println(sum(1,2,3));
+    }
+}
+```
 
-12. JRM ,JDK, JVM
+### 12. JRM ,JDK, JVM
     - What runs on a machine(JVM) is bytecode 
 
 - Type java code -> Compile it --> converted into bytecode
@@ -60,13 +77,43 @@
 
 - JDK : Top layer -> After installing JDK u'll get JRE and JVM
 
-14. is there a diference between int i=9 and int i=09
+### 14. is there a diference between int i=9 and int i=09
+- Yes, there is a difference between int i = 9 and int i = 09 in Java.
 
-15. What is base class?
+- In the first case, int i = 9, you are assigning the decimal value 9 to the variable i. This is a straightforward assignment of an integer literal in base 10.
 
-16. base class vs abstract class?
+- In the second case, int i = 09, the leading zero indicates that the value is specified in octal (base 8). In octal representation, valid digits are 0 through 7. Therefore, 09 is not a valid octal number because 9 is not a valid octal digit. If you try to compile code with int i = 09, it will result in a compilation error.
 
-      03:01:2024
+### 15. What is base class?
+- In object-oriented programming, classes can be organized into hierarchies where one class inherits properties and behaviors from another. The class that is being inherited from is called the "superclass" or "base class," and the class that inherits from it is called the "subclass" or "derived class."
+
+### 16. base class vs abstract class?
+#### Base Class:
+- In a general sense, a "base class" refers to any class that is extended or inherited by another class.
+- The term is not explicitly used in Java, but it's common to refer to the superclass in a class hierarchy as the "base class."
+- The base class provides a common set of attributes and behaviors that can be reused by its subclasses.
+
+#### An abstract class :
+- in Java is a class that cannot be instantiated on its own and may contain abstract methods.
+- Abstract methods are declared without an implementation in the abstract class and must be implemented by concrete (non-abstract) subclasses.
+- Abstract classes can have both abstract and non-abstract (concrete) methods.
+```
+ abstract class Shape { //abstract class
+    abstract void draw(); // Abstract method
+    
+    void resize() {
+        System.out.println("Resizing the shape");
+    }
+}
+
+// Concrete subclass
+class Circle extends Shape {
+    void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+```
+  03:01:2024
       
 
 17. Abstract class vs Interface.
