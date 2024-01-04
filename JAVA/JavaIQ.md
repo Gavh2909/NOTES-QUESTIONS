@@ -1,5 +1,28 @@
 
 ### 1. Different between normal hashmap and concurrent hashmap?
+- `HashMap` and `ConcurrentHashMap` are both implementations of the `Map` interface in Java, but they have significant differences, especially in terms of thread-safety and performance in concurrent environments:
+
+#### 1. **Thread Safety:**
+   - **HashMap:** `HashMap` is not thread-safe. If multiple threads try to modify the `HashMap` concurrently, it can lead to data corruption or infinite loops. You need to synchronize access to a `HashMap` explicitly using external synchronization (e.g., `Collections.synchronizedMap(map)`).
+   - **ConcurrentHashMap:** `ConcurrentHashMap` is designed to be thread-safe without the need for external synchronization. It supports concurrent reads and writes. Different segments of the map can be updated concurrently, which can lead to better performance in highly concurrent scenarios.
+
+#### 2. **Segmentation:**
+   - **HashMap:** A regular `HashMap` is not divided into segments. When multiple threads try to update the map simultaneously, they can interfere with each other.
+   - **ConcurrentHashMap:** `ConcurrentHashMap` is internally divided into segments. Each segment acts as an independent hash table, and different segments can be updated concurrently. This helps to minimize contention and provides better concurrency.
+
+#### 3. **Locking Strategy:**
+   - **HashMap:** It uses a single lock for the entire map during modifications. This means that if one thread is modifying the map, other threads are blocked, leading to potential performance bottlenecks in a highly concurrent environment.
+   - **ConcurrentHashMap:** It uses a finer-grained locking strategy. Each segment has its own lock, allowing multiple threads to operate on different segments simultaneously. This reduces contention and improves concurrency.
+
+#### 4. **Iterators:**
+   - **HashMap:** If the `HashMap` is modified while iterating over it (except through the iterator's own `remove` method), it can lead to `ConcurrentModificationException`.
+   - **ConcurrentHashMap:** Iterators of `ConcurrentHashMap` provide weakly consistent views. They reflect the state of the map at some point in time and do not throw `ConcurrentModificationException` even if the map is modified during iteration.
+
+#### 5. **Performance:**
+   - **HashMap:** In a single-threaded environment or when there is limited contention, a regular `HashMap` might perform well.
+   - **ConcurrentHashMap:** In highly concurrent scenarios, where multiple threads are frequently reading and writing, `ConcurrentHashMap` is designed to provide better performance by allowing concurrent updates to different segments.
+
+- In summary, `ConcurrentHashMap` is a more suitable choice in concurrent environments due to its built-in thread-safety and better support for concurrent operations. If you are dealing with a single-threaded environment or can ensure external synchronization, a regular `HashMap` may be sufficient.
 
  ### 2. Immutability concept.
    - immuntability in java refers to the property of an object whose state cannot be modified after it has been created.
