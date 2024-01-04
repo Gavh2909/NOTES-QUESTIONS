@@ -295,45 +295,351 @@ In Java, both abstract classes and interfaces are used to achieve abstraction, b
 In some cases, a combination of abstract classes and interfaces may be used to achieve the desired level of abstraction and code reuse in a Java application.
 
 
-18. functional interface. **
+### 18. functional interface. 
 
-19. Hashmap hashcode overriden scenario
+In Java, a functional interface is an interface that contains only one abstract method. Functional interfaces are a key concept in the functional programming paradigm introduced in Java 8 with the addition of lambda expressions and the `java.util.function` package.
 
-20. Rehashing
+Here are the characteristics of a functional interface:
 
-21. Criteria for hashmap.
+1. **Single Abstract Method (SAM):**
+   - A functional interface should declare exactly one abstract method. This method is often referred to as the "functional method" or "single abstract method" (SAM).
+   - The presence of a single abstract method allows instances of functional interfaces to be created using lambda expressions or method references.
 
-22. Can string and stringbuilder and primitive integer, qrapper Integer be a hashmap key?
+2. **Optional Default and Static Methods:**
+   - A functional interface can have additional default methods or static methods with implementations, but it must have only one abstract method.
+   - Default methods provide a default implementation for a method, and static methods are associated with the interface itself.
 
-23. Can store primitive Integer as a value of hashmap?
+3. **Annotation:**
+   - While not required, it's a good practice to use the `@FunctionalInterface` annotation on a functional interface to indicate its intended use as a functional interface. This annotation is optional but helps prevent accidental addition of more than one abstract method.
 
-24. Failfast and failsafe collection
+Here's an example of a functional interface:
+
+```java
+@FunctionalInterface
+interface MyFunctionalInterface {
+    void myMethod(); // Single abstract method
+
+    // Optional: Default method
+    default void defaultMethod() {
+        System.out.println("Default method");
+    }
+
+    // Optional: Static method
+    static void staticMethod() {
+        System.out.println("Static method");
+    }
+}
+```
+
+With functional interfaces, you can use lambda expressions to concisely represent instances of these interfaces. For example:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Using a lambda expression to create an instance of MyFunctionalInterface
+        MyFunctionalInterface functionalInstance = () -> System.out.println("Lambda expression implementation");
+        
+        // Calling the method defined in the functional interface
+        functionalInstance.myMethod();
+
+        // Calling default and static methods
+        functionalInstance.defaultMethod();
+        MyFunctionalInterface.staticMethod();
+    }
+}
+```
+
+Functional interfaces are commonly used in conjunction with lambda expressions to write more concise and expressive code, particularly when working with features introduced in Java 8 and later, such as the Stream API and the functional programming enhancements.
 
 
+19. Hashmap hashcode overriden scenario [PENDING]
 
-25. biddecimal comaprison
+### 20. Rehashing
+- 
+Rehashing is a process used in hash-based data structures, such as HashMap, to resize the underlying hash table and reorganize the elements when the load factor exceeds a certain threshold. The load factor is the ratio of the number of elements to the size of the hash table. Rehashing helps in maintaining a reasonable balance between the number of elements and the size of the hash table, ensuring efficient performance.
 
-26. Heap and Stack memory.  lasting
+- In Java, HashMap is an example of a hash-based data structure that uses rehashing. When the number of elements in a HashMap exceeds a certain threshold (determined by the load factor), the HashMap automatically increases the size of the underlying array and rehashes the elements into the new array.
 
-27. Marker interface in java
+### 21. Criteria for hashmap.
+When choosing to use a `HashMap` in Java, you need to consider various factors and criteria to ensure that it is the appropriate data structure for your specific use case. Here are some criteria to consider when deciding whether to use a `HashMap`:
 
-28. POJO 
+1. **Efficient Lookup:**
+   - Use a `HashMap` when you need fast and efficient lookups. The average time complexity for search operations (get and containsKey) in a `HashMap` is O(1).
 
-29. Optional classes  
+2. **Key-Value Pairs:**
+   - Use a `HashMap` when you have a collection of key-value pairs. It allows you to store and retrieve values based on unique keys.
 
-30. CIrcuit breaker design pattern
+3. **Uniqueness of Keys:**
+   - Each key in a `HashMap` must be unique. If you need to associate unique keys with values, a `HashMap` is suitable.
 
-31. fault isolation
+4. **Null Values:**
+   - `HashMap` allows one `null` key and multiple `null` values. If your application needs to handle null keys or values, a `HashMap` is a good choice.
 
-32. Executer framework in threading
+5. **Unordered Elements:**
+   - The order of elements in a `HashMap` is not guaranteed. If you don't need a specific order for your elements, a `HashMap` is appropriate.
 
-33. How do you decide no of threads required for designing the appliacation? count??
+6. **No Duplicate Values:**
+   - While keys must be unique, values can be duplicated. If you need to store duplicate values associated with different keys, a `HashMap` is suitable.
 
-34. Deadlogs in threading? deadlock..?
+7. **Dynamic Size:**
+   - `HashMap` automatically adjusts its size as elements are added or removed. If you have a dynamic set of elements and the size may change frequently, a `HashMap` is a good choice.
 
-35. what is synchronized?
+8. **Complexity of Operations:**
+   - `HashMap` provides O(1) time complexity for basic operations like get, put, and remove in the average case. This makes it efficient for scenarios where these operations are frequently performed.
 
-36. when to use linkedlist over list?
+9. **Memory Efficiency:**
+   - `HashMap` uses memory to store key-value pairs. If memory efficiency is a concern, consider the memory requirements of your application and the size of the data set.
+
+10. **Concurrency Considerations:**
+    - If your application requires thread safety, consider using `ConcurrentHashMap` instead of a regular `HashMap`. `ConcurrentHashMap` supports concurrent access by multiple threads without the need for external synchronization.
+
+11. **Custom Object Equality:**
+    - If you have custom objects as keys, ensure that you override the `hashCode()` and `equals()` methods appropriately to maintain the contract required by `HashMap`.
+
+### 22. Can string and stringbuilder and primitive integer, Wrapper Integer be a hashmap key?
+
+Yes, both `String`, `StringBuilder`, and instances of `Integer` (primitive wrapper class for `int`) can be used as keys in a `HashMap` in Java. However, there are some considerations and differences between them:
+
+1. **String as a Key:**
+   - `String` is commonly used as a key in a `HashMap`. Strings are immutable, and their hash codes are calculated based on their content.
+   - Example:
+
+     ```java
+     HashMap<String, Integer> stringHashMap = new HashMap<>();
+     stringHashMap.put("one", 1);
+     stringHashMap.put("two", 2);
+     ```
+
+2. **StringBuilder as a Key:**
+   - `StringBuilder` is mutable, and its hash code is calculated based on its current content. However, using a mutable object as a key in a `HashMap` can lead to unexpected behavior if the key is modified after being used in the `HashMap`.
+   - It's generally not recommended to use mutable objects as keys in hash-based data structures because modifications can change the hash code, leading to difficulties in retrieving the associated value.
+
+     ```java
+     HashMap<StringBuilder, Integer> stringBuilderHashMap = new HashMap<>();
+     stringBuilderHashMap.put(new StringBuilder("one"), 1);
+     stringBuilderHashMap.put(new StringBuilder("two"), 2);
+     ```
+
+3. **Integer (Primitive) as a Key:**
+   - Primitive data types, including `int`, cannot be used directly as keys in a `HashMap`. However, their corresponding wrapper classes, such as `Integer`, can be used.
+   - Example:
+
+     ```java
+     HashMap<Integer, String> integerHashMap = new HashMap<>();
+     integerHashMap.put(1, "one");
+     integerHashMap.put(2, "two");
+     ```
+
+4. **Wrapper Integer as a Key:**
+   - Instances of `Integer` (and other wrapper classes for primitive types) can be used as keys in a `HashMap`.
+   - Example:
+
+     ```java
+     HashMap<Integer, String> integerHashMap = new HashMap<>();
+     integerHashMap.put(new Integer(1), "one"); // Before Java 9
+     integerHashMap.put(2, "two"); // Autoboxing (Java 9 and later)
+     ```
+
+   - Autoboxing allows you to use primitive literals directly as keys in a `HashMap` without explicitly creating instances of wrapper classes.
+
+
+### 23. Can store primitive Integer as a value of hashmap?
+    - In Java, the HashMap class only allows objects to be used as values. Primitive types, including int, cannot be directly used as values in a HashMap. However, you can use the corresponding wrapper classes for primitive types, such as Integer, to store integers as values.
+----
+## Types of Data Types:
+
+### 1. Primitive:
+In Java, there are eight primitive data types. They are:
+
+1. **byte:**
+   - 8-bit signed integer.
+   - Range: -128 to 127.
+
+   ```java
+   byte myByte = 127;
+   ```
+
+2. **short:**
+   - 16-bit signed integer.
+   - Range: -32,768 to 32,767.
+
+   ```java
+   short myShort = 32767;
+   ```
+
+3. **int:**
+   - 32-bit signed integer.
+   - Range: -2^31 to 2^31 - 1.
+
+   ```java
+   int myInt = 2147483647;
+   ```
+
+4. **long:**
+   - 64-bit signed integer.
+   - Range: -2^63 to 2^63 - 1.
+
+   ```java
+   long myLong = 9223372036854775807L;
+   ```
+
+5. **float:**
+   - 32-bit IEEE 754 floating-point.
+   - Example:
+
+   ```java
+   float myFloat = 3.14f;
+   ```
+
+6. **double:**
+   - 64-bit IEEE 754 floating-point.
+   - Example:
+
+   ```java
+   double myDouble = 3.14;
+   ```
+
+7. **char:**
+   - 16-bit Unicode character.
+   - Example:
+
+   ```java
+   char myChar = 'A';
+   ```
+
+8. **boolean:**
+   - Represents true or false.
+
+   ```java
+   boolean myBoolean = true;
+   ```
+
+These primitive data types are used to represent simple values and are not objects. They have corresponding wrapper classes (e.g., `Byte`, `Short`, `Integer`, `Long`, `Float`, `Double`, `Character`, `Boolean`) that allow them to be used in contexts that require objects, such as collections and generics.
+
+### 2. Non-Primitive:
+In Java, non-primitive data types are reference types or objects. They are instances of classes or interfaces, and they can be more complex than primitive data types. Here are some common non-primitive data types in Java:
+
+1. **Object Types:**
+   - The most general type, representing any object.
+   - Example:
+
+     ```java
+     Object myObject = new Object();
+     ```
+
+2. **String:**
+   - A sequence of characters.
+   - Example:
+
+     ```java
+     String myString = "Hello, Java!";
+     ```
+
+3. **Arrays:**
+   - Collections of elements of the same type.
+   - Example:
+
+     ```java
+     int[] myIntArray = {1, 2, 3, 4, 5};
+     ```
+
+4. **Classes:**
+   - User-defined types that encapsulate data and behavior.
+   - Example:
+
+     ```java
+     class MyClass {
+         // class definition
+     }
+
+     MyClass myInstance = new MyClass();
+     ```
+
+5. **Interfaces:**
+   - Defines a contract for implementing classes.
+   - Example:
+
+     ```java
+     interface MyInterface {
+         // interface definition
+     }
+
+     class MyImplementation implements MyInterface {
+         // implementation of the interface
+     }
+     ```
+
+6. **Enum Types:**
+   - A special type that defines a set of constants.
+   - Example:
+
+     ```java
+     enum Day {
+         MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+     }
+
+     Day today = Day.MONDAY;
+     ```
+
+7. **Collections:**
+   - Various classes and interfaces in the `java.util` package that represent dynamic groups of elements.
+   - Examples:
+
+     ```java
+     List<String> myList = new ArrayList<>();
+     Set<Integer> mySet = new HashSet<>();
+     ```
+
+8. **Maps:**
+   - Classes in the `java.util` package that represent key-value pairs.
+   - Example:
+
+     ```java
+     Map<String, Integer> myMap = new HashMap<>();
+     ```
+
+9. **Custom Classes:**
+   - User-defined classes created to model specific entities or concepts in an application.
+   - Example:
+
+     ```java
+     class Person {
+         String name;
+         int age;
+     }
+
+     Person person = new Person();
+     person.name = "John";
+     person.age = 25;
+     ```
+
+04/01/2024
+
+25. Failfast and failsafe collection  [PENDING]
+
+26. biddecimal comaprison
+
+27. Heap and Stack memory.  lasting
+
+28. Marker interface in java
+
+29. POJO 
+
+30. Optional classes  
+
+31. CIrcuit breaker design pattern
+
+32. fault isolation
+
+33. Executer framework in threading
+
+34. How do you decide no of threads required for designing the appliacation? count??
+
+35. Deadlogs in threading? deadlock..?
+
+36. what is synchronized?
+
+37. when to use linkedlist over list?
 
 
 
