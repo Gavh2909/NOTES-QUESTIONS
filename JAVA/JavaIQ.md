@@ -615,7 +615,39 @@ In Java, non-primitive data types are reference types or objects. They are insta
 
 04/01/2024
 
-25. Failfast and failsafe collection  [PENDING]
+### 25. Failfast and failsafe collection  [PENDING]
+"Failfast" and "failsafe" are terms commonly associated with collections in programming, particularly in the context of concurrent programming and data structures. Let's explore each term:
+
+1. **Failfast:**
+   - **Definition:** A failfast strategy involves detecting and addressing errors as soon as they occur, rather than allowing the program to continue with potentially corrupted or inconsistent data.
+   - **Collections:** In the context of collections (like lists, sets, or maps), a failfast iterator will throw a ConcurrentModificationException if the collection is modified structurally while it is being iterated. This is done to prevent potential issues that may arise from concurrent modifications.
+
+   ```java
+   List<String> list = new ArrayList<>();
+   Iterator<String> iterator = list.iterator();
+
+   list.add("Item 1");
+   iterator.next(); // This may throw ConcurrentModificationException
+   ```
+
+   - **Use Case:** Failfast mechanisms are beneficial in situations where detecting errors early is crucial to prevent further issues or data corruption.
+
+2. **Failsafe:**
+   - **Definition:** A failsafe strategy aims to provide a reliable and consistent behavior even in the presence of errors or failures. Instead of terminating the program or throwing exceptions, failsafe mechanisms attempt to recover or continue execution in a safe manner.
+   - **Collections:** Failsafe collections are designed to be thread-safe and handle concurrent modifications without causing exceptions or corruption. They typically use techniques such as locking or atomic operations to ensure consistency.
+
+   ```java
+   List<String> list = new CopyOnWriteArrayList<>();
+   Iterator<String> iterator = list.iterator();
+
+   list.add("Item 1");
+   // No exception will be thrown, and iterator will reflect the original state of the list
+   ```
+
+   - **Use Case:** Failsafe mechanisms are suitable for scenarios where graceful degradation or continued operation is more important than immediate failure due to errors. They are often used in concurrent programming to ensure data integrity.
+
+In summary, failfast collections aim to detect errors early and raise exceptions to prevent further issues, while failsafe collections focus on providing consistent behavior even in the presence of errors, allowing programs to continue running with a potentially degraded but safe state. 
+
 
 26. biddecimal comaprison
 
