@@ -6,6 +6,7 @@
    - **Works:** Autobiography "Baburnama"
    - **Birth and Birthplace:** 14 February 1483, Andijan, Central Asia
    - **Known for:** Founder of the Mughal Empire, Battle of Panipat in 1526.
+     ______________________________
 
 ### 2. **Humayun (1530-1540, 1555-1556):**
    - **Timeline:** 1508 - 1540, 1555 - 1556
