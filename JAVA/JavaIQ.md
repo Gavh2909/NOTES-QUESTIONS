@@ -651,27 +651,60 @@ In summary, failfast collections aim to detect errors early and raise exceptions
 
 26. biddecimal comaprison
 
-27. Heap and Stack memory.  lasting
+## 27. Heap and Stack memory.  lasting
 
-28. Marker interface in java
+### Heap Memory:
+  - The heap is used for dynamic memory allocation. Objects, such as instances of classes, are created on the heap.
+  - It is a region of memory managed by JVM.
+  - The heap memory is subject to automatic garbage collection.
+  - The JVM periodically identifies and reclaims memory occupied by objects that are no longer rechable, freeing up resource.
 
-29. POJO 
+### Stack memory:
+  - The stack is used for method execution.
+  - Each thread in java has its own stack, and it is where method variables and method call information  are stored.
+  - LIFO structure --> Last In First Out
+    
 
-30. Optional classes  
+## 29. Marker interface in java   
+- has no methods.
+- It serves as a marker to convey information about the class implementiong it.
+- Example : Serializable interface, which is used to indicate that a class can be serialized.
 
-31. CIrcuit breaker design pattern
+## 30. POJO
+- Plain Old Java Object
+- Java class that doesn't follow any special programming model or framework, and it follows basic principles of OOP.
+- A POJO typically represents a simple data structure and doesn't have any dependencies.
+```
+public class Person{
+   private String name;
+   private int age;
+   //constructirs
+   public Person(){
+   }
+   public Person(String name,int age){
+     this.name=name;
+     this.age=age;
+   }
+ //setters and getters
+}
+```
 
-32. fault isolation
+## 31. Optional classes  
 
-33. Executer framework in threading
 
-34. How do you decide no of threads required for designing the appliacation? count??
+32. CIrcuit breaker design pattern
 
-35. Deadlogs in threading? deadlock..?
+33. fault isolation
 
-36. what is synchronized?
+34. Executer framework in threading
 
-37. when to use linkedlist over list?
+35. How do you decide no of threads required for designing the appliacation? count??
+
+36. Deadlogs in threading? deadlock..?
+
+37. what is synchronized?
+
+38. when to use linkedlist over list?
 
 
 
