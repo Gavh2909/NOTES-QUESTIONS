@@ -768,7 +768,13 @@ using various factors like
 
 ### 39. when to use linkedlist over list?
 
-
+40. What is struct framework?
+41. Reading file in java?
+42. Stringbuilder vs StringBuffer?
+43. Synchronization
+44. Custom Exception handling
+45. Stream API.
+    
 
 
 
@@ -848,6 +854,9 @@ SPRING :
 - using @cashble @CachePut, @CacheEvict.
 - Caching --> technique used in computing to store and manage copies of freque=ntly accessed or computed data in order to improve the performance of apps.
 
+14. JPA or ORM or Hybernate?   which one u are using
+15. Web service vs microservice
+16.  
 
 
 
