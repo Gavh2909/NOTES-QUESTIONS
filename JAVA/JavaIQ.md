@@ -691,7 +691,8 @@ public class Person{
 
 ## 31. Optional classes  
 
-The `Optional` class in Java is part of the java.util package and was introduced in Java 8. It is designed to help eliminate null pointer exceptions and encourage more explicit handling of cases where a value might be absent.
+- The `Optional` class in Java is part of the java.util package and was introduced in Java 8.
+- It is designed to help eliminate null pointer exceptions and encourage more explicit handling of cases where a value might be absent.
 
 Here's a brief overview of the `Optional` class:
 
@@ -734,22 +735,38 @@ Here's a brief overview of the `Optional` class:
    String result = nullableOptional.orElse("Value is absent");
    ```
 
-Using `Optional` can lead to more readable and less error-prone code when dealing with situations where a value might be absent. However, it's important to use it judiciously and not excessively, especially in cases where the use of null is appropriate.
+Using `Optional` can lead to more readable and less error-prone code when dealing with situations where a value might be absent.
 
 
-32. CIrcuit breaker design pattern
+## 32. CIrcuit breaker design pattern
+- used to handle faults and failures in a distributed system.
 
-33. fault isolation
+## 33. fault isolation
+- Managing and containing errors or faults to prevent them from cancading and affecting the overall stability of a system.
+- 1. Exception Handling : using Try and Catch
+- 2. Circuit breaker Pattern :Implement the circuit breaker to detect and handle failures in a distributed system.
+- Isolation with threads:
+- Microservices : In a microservices architecture, faults in one service shuld not bring down the entore system.
+- Each microservice operates independently, and failures are isolaed to the specific service.
 
 34. Executer framework in threading
 
-35. How do you decide no of threads required for designing the appliacation? count??
+### 35. How do you decide no of threads required for designing the appliacation? count??
+using various factors like
+- 1. Nature of your task
+  2. The characteristics of your system.
+  3. available resources.
+     
+### 36. Deadlogs in threading? deadlock..?
+   - occurs when two or more threads are blocked forever, each waiting for other to release a lock.
+   - This situation results in a standstill, where no thread ca proceed, leading to a ha;t in the execution of the program.
 
-36. Deadlogs in threading? deadlock..?
+### 38. what is synchronized?
+- used to control acccess to critical section of code in multithreaded environment.
+- provides way to prevent mulltiple threads from concurrently executing certain sections of code, ensuring only one can access it at a time.
+- Purpose : Thread safety
 
-37. what is synchronized?
-
-38. when to use linkedlist over list?
+### 39. when to use linkedlist over list?
 
 
 
@@ -757,29 +774,79 @@ Using `Optional` can lead to more readable and less error-prone code when dealin
 
 SPRING :
 
-1. What is Dependency injection?
+### 1. What is Dependency injection?
+- involves injecting dependencies into components,
+- promoting loose coupling.
+- TYPES: Construcotr, Setter, Field Injection.
+- @Autowired, @Qualifier, @Resource facilitate DI.
+- XML conf is alternative
+- Benefits : 1. Loose coupling  2. Testability,  3. Flexibility abd adherence to best practices.
+- Spring IOC container manages object creation and dependency injection.
 
-2. Solid principles?
+### 2. Solid principles?
+- set of design principles that aim to create more maintainable, scalable, and flexible software.
+- widely used in OOP.
+  
+  #### 1. Single Responsibility Principle(SRP):
+  - a class should have only one reason to change.
+  - one responsibility.
+  - promotes maintainability and readability.
+  #### 2. Open and Closed Principle;
+  - should be open for extension but not for modification.
+  - encourages use of interfaces, abstract classes, and polimorphism.
+  ### 3. LISKOV Substituiton Principle:
+  ### 4. Interface Segregation Principle:
+  ### 5. Dependency Inversion Principle:
 
-3. How Singleton design pattern coulb be breck?
+### 3. How Singleton design pattern coulb be breck?
+- Singleton design pattern intended to ensure that a class has only one object and prvides global point of access tp that object.
+  #### How to break:
+  #### Reflection:
+  - using Java reflection , it's possible to maccess the private constructor of a singleton class and creating enw instances.
+  #### Serialization and Deserialization:
+  - If singleton class is serializable deserializing an object can create a new instance.
+  #### Multithreading:
+   - im MT env, if the singleton instance is not properly synchronized during creation, it may lead to creation of multiple instances.
 
-4. Step we have to for saving data in DB using PostAPI[postmapping]?
+### 4. Step we have to for saving data in DB using PostAPI[postmapping]?
+- 1. configure DB connection in 'application.properties' file.
+  2. Create entity class. @Entity @Id @GeneratedValue(strategy=GenerationType.AUTO)
+  3. create Repository interface extends JpaRepository<EntityName, Primary_Key_Datatype> -->
+  4. Create service class --> @Service --> create method to save the data --> Inject Repository here only
+  5. Create controller--> @postmapping -->inject service bean -->save it
+  6. Test with postman
 
-5. Difference between POST and PUT?
+### 5. Difference between POST and PUT?
+- POST : Creating a new resource
+- Submitting form data.
+- Uploading file
+
+- PUT: update existing data.
+- Creating a new resource if it doesnot exit at the specified URL.
 
 6. PUT and PATCH difference?
+- Patch
+- Updating specific fields.
+- like updating only one field
+  
+### 7. How do you find the second or nth highest salary of employee?
+   - SELECT DISTINCT salary
+     FROM employees
+     ORDER BY salary DESC
+     LIMIT 1 OFFSET (n-1);
 
-7. How do you find the second highest salary of employee?
+### 9. how to manage DB threads in spring?
 
-8. how to manage DB threads in spring?
+10. How to set limit for REST API?
 
-9. How to set limit for REST API?
+11. What is pool?
 
-10. What is pool?
+### 12. Resttemplate in springboot?
+- RestTemplate is a class in sring framework that simplifies the process of making HTTP requests to remote services.
 
-11. Resttemplate in springboot?
-
-12. How to implement cashing in sprboot?
+### 13. How to implement cashing in sprboot?
+- using @cashble @CachePut, @CacheEvict.
+- Caching --> technique used in computing to store and manage copies of freque=ntly accessed or computed data in order to improve the performance of apps.
 
 
 
